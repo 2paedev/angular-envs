@@ -33,11 +33,35 @@
             "scripts": []
           },
           "configurations": {
-            "production": {
+            "dev": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "with": "src/environments/environment.dev.ts"
+                }
+              ],
+              "optimization": false,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            },
+            "pre": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.pre.ts"
                 }
               ],
               "optimization": true,
@@ -56,6 +80,30 @@
                   "maximumError": "5mb"
                 }
               ]
+            },
+            "prod": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": true,
+              "extractCss": true,
+              "namedChunks": true,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": true,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
             }
           }
         },
@@ -65,8 +113,14 @@
             "browserTarget": "angular-envs:build"
           },
           "configurations": {
-            "production": {
-              "browserTarget": "angular-envs:build:production"
+            "dev": {
+              "browserTarget": "angular-envs:build:dev"
+            },
+            "pre": {
+              "browserTarget": "angular-envs:build:pre"
+            },
+            "prod": {
+              "browserTarget": "angular-envs:build:prod"
             }
           }
         },
@@ -119,6 +173,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "angular-envs"
 }
